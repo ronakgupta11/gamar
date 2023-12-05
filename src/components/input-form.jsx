@@ -117,6 +117,7 @@ export function InputForm() {
     { name: "Content-Type",value: "application/x.arweave-manifest+json" },
     // { name: "Indexed-By", value: "ucm" },
     { name: "License", value: "yRj4a5KMctX_uOmKWCFJIjmY8DeJcusVk6-HzLiM_t8" },
+    {name:"License-Type",value:values.license},
     {name :"License-Fee",value:values.payment},
     { name: "App-Name", value: "GamAr" },
     { name: "App-Version", value: "0.0.1" },
@@ -257,10 +258,9 @@ export function InputForm() {
                         <SelectContent>
                           <SelectGroup>
                             <SelectLabel>License Options</SelectLabel>
-                            <SelectItem value="default">UDL Default Public Use</SelectItem>
-                            <SelectItem value="access">UDL Restricted Access</SelectItem>
-                            <SelectItem value="commercial">UDL Commercial Use - One Time Payment</SelectItem>
-                            <SelectItem value="derivative">UDL Derivative Works - One Time Payment</SelectItem>
+                            <SelectItem value="free">UDL Default Public Use</SelectItem>
+                            <SelectItem value="oneTime">UDL Public Use - Monthly Payment</SelectItem>
+                            <SelectItem value="monthly">UDL Public Use - One Time Payment</SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>

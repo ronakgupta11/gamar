@@ -22,11 +22,46 @@ export const fetchAllGames= async ()=>{
         }
     }
     `
-    const result = await queryAllTransactionsGQL(graphqlQuery, {
+    const response = await queryAllTransactionsGQL(graphqlQuery, {
         gateway: "arweave.net",
         filters: {},
       });
-      
+      console.log("response",response[0].node.tags)
+      const findTagValue = (tagName, tags) => {
+        return tags.find((tag) => tag.name === tagName)?.value;
+      };
+      const determineLicense = (tags) => {
+        let licenses = [];
+    
+        if (findTagValue("Access", tags) === "Restricted") {
+          licenses.push(findTagValue("Access", tags) ?? "");
+          licenses.push(findTagValue("Access-Fee", tags) ?? "");
+        } else if (findTagValue("Derivation", tags) === "Allowed-with-license-fee") {
+          licenses.push(findTagValue("Derivation", tags) ?? "");
+          licenses.push(findTagValue("Derivation-Fee", tags) ?? "");
+        } else if (findTagValue("Commercial-Use", tags) === "Allowed") {
+          licenses.push(findTagValue("Commercial-Use", tags) ?? "");
+          licenses.push(findTagValue("Commercial-Fee", tags) ?? "");
+        } else {
+          licenses.push("Default-Public-Use");
+          licenses.push("None");
+        }
+    
+        return licenses;
+      };
+     const result = response.map((edges) => {
+        const tags = edges.node.tags;
+        const contentType=findTagValue("Content-Type",tags).split('/')[0]
+        console.log(contentType)
+        return {
+          id: edges.node.id,
+          title: findTagValue("Title", tags) || "",
+          description: findTagValue("Description", tags) || "",
+          license: determineLicense(tags),
+          
+          contentType : contentType
+        };
+      });
      console.log(result)
     
       return result
