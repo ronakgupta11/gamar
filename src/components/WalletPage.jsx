@@ -59,7 +59,8 @@ import {
              Buy Games
              </Link>
             </div>
-            <div href="#">Arcade</div>
+            <div href="/arcade">
+              <Link href="/arcade">Arcade</Link></div>
             <div href="#">Stream</div>
   
             <ConnectButton
