@@ -26,25 +26,23 @@ export default function PlayPage({gameLink}) {
         
           <div className="h-full w-full object-contain bg-contain rounded-lg overflow-hidden select-none">
           
-            <div className="absolute top-0 left-0 right-0 bottom-0 z-10 w-full"
-            >
-              
-            </div>
+
           </div>
 
           {/* Overlay Image Container */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 z-10 "
+          <div className="absolute top-0  left-0 right-0 bottom-0 z-10 "
           
           >
             { <iframe 
-            className="w-full h-full z-50 "
+            scrolling="no"
+            className="w-full h-full z-50 rounded-3xl "
             src={"https://76pdzit2im7ck2mwkpn2otlvxicfhtw7ugk6omjmy4unghkipfoa.arweave.net/_548onpDPiVpllPbp011ugRTzt-hlecxLMco0x1IeVw/"} frameborder="0">
             </iframe>}
             <Image
               src="/arcadebg.jpg"
               layout="fill"
               objectFit="cover"
-              className="brightness-75 pointer-events-none opacity-20 z-10 object-contain rounded-3xl"
+              className="brightness-75 pointer-events-none opacity-40 z-10 object-contain rounded-3xl"
             >
             </Image>
           </div>
