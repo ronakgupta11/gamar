@@ -43,7 +43,7 @@ import {
           <div href="#" className="flex">
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               <Link href={"/"}>
-              GameAr
+              GamAr
               </Link>
             </span>
           </div>
