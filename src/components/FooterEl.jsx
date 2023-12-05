@@ -7,8 +7,12 @@ import { Footer } from 'flowbite-react';
 export function FooterEl(){
 return(
 <Footer container className='bg-slate-900  rounded-br-none rounded-bl-none'>
-<div className="w-full h-15 ">
-  <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+<div
+ 
+ >
+  <div 
+   
+  className="grid w-full justify-between  sm:flex sm:justify-between md:flex md:grid-cols-1">
     <div>
       {/* <Footer.Brand
         href="https://flowbite.com"

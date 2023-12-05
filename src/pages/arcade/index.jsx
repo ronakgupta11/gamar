@@ -1,8 +1,10 @@
 import Image from "next/image";
 
-export default function PlayPage() {
+export default function PlayPage({gameLink}) {
   return (
-    <main className="py-12">
+    <main className="py-15"
+     style={{marginBottom:"10rem"}}
+    >
       {/* <Image src={"/border.png"} width={199} height={199} /> */}
       <Image
         src="/joystickNew.png"
@@ -20,23 +22,31 @@ export default function PlayPage() {
 
       <div className="w-full h-screen   rounded-lg bg-slate-950 bg-clip-padding -z-20 py-12">
 
-        <div className="absolute m-auto left-0   border-white right-0 top-20 h-[40rem] w-[50rem] rounded-3xl bg-slate-950 bg-clip-padding z-10">
-          {/* Game Content Container */}
+        <div className="absolute m-auto left-0   border-white right-0 top-20 h-screen lg:w-[65rem] rounded-3xl bg-slate-950 bg-clip-padding z-10">
+        
           <div className="h-full w-full object-contain bg-contain rounded-lg overflow-hidden select-none">
-            {/* Your game content goes here */}
-            <div className="absolute top-0 left-0 right-0 bottom-0">
-              {/* Add your game elements here */}
+          
+            <div className="absolute top-0 left-0 right-0 bottom-0 z-10 w-full"
+            >
+              
             </div>
           </div>
 
           {/* Overlay Image Container */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 z-10">
+          <div className="absolute top-0 left-0 right-0 bottom-0 z-10 "
+          
+          >
+            {gameLink && <iframe 
+            className="w-full h-full z-50 "
+            src={gameLink} frameborder="0">
+            </iframe>}
             <Image
               src="/arcadebg.jpg"
               layout="fill"
               objectFit="cover"
-              className="brightness-75 pointer-events-none opacity-50 z-10 object-contain rounded-3xl"
-            />
+              className="brightness-75 pointer-events-none opacity-20 z-10 object-contain rounded-3xl"
+            >
+            </Image>
           </div>
         </div>
       </div>

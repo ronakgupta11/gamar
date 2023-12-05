@@ -14,13 +14,13 @@ const gameData = [
     {
       title: "Color Matcher",
       description: "Test your memory and color recognition skills in Color Matcher. Match the displayed color by tapping on the corresponding buttons before time runs out. How many levels can you conquer in this vibrant challenge?",
-    }
+    },
   ];
 
 const index = () => {
   return (
     <>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-20 m-10 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  my-20 m-10 gap-6 ">
     {
         gameData.map(
             (data,index)=>{
