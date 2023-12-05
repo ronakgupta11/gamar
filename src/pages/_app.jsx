@@ -31,7 +31,6 @@ export default function App({ Component, pageProps }) {
             <div className="w-full  bottom-0">
             <FooterEl />
             </div>
-          <TailwindIndicator />
         </UserProvider>
       </ArweaveWalletKit>
     </ThemeProvider>

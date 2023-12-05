@@ -43,7 +43,7 @@ import {
           <div href="#" className="flex">
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               <Link href={"/"}>
-              GameAr
+              GamAr
               </Link>
             </span>
           </div>
@@ -59,7 +59,8 @@ import {
              Buy Games
              </Link>
             </div>
-            <div href="#">Arcade</div>
+            <div href="/arcade">
+              <Link href="/arcade">Arcade</Link></div>
             <div href="#">Stream</div>
   
             <ConnectButton
