@@ -11,13 +11,25 @@ import WalletPage from "@/components/WalletPage";
 import { HomePage } from "@/components/HomePage";
 import FeaturesPage from "@/components/FeaturesPage";
 import { LivepeerConfig, createReactClient, studioProvider } from '@livepeer/react';
+import { Space_Mono } from "next/font/google";
+
+const spaceMono = Space_Mono({
+  subsets:['latin'],
+  variable:['--font-mono'],
+  weight:['400', '700']
+
+})
 
 const client = createReactClient({
   provider: studioProvider({ apiKey: '29d3b6bc-523c-46bc-86e6-8a6d1fe02207' }),
 });
 
+
+
+
 export default function App({ Component, pageProps }) {
   return (
+    <main className={`${spaceMono.variable} font-sans`}>
     <LivepeerConfig client={client}>
 
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
@@ -42,6 +54,6 @@ export default function App({ Component, pageProps }) {
       </ArweaveWalletKit>
     </ThemeProvider>
     </LivepeerConfig>
-
+    </main>
   );
 }
