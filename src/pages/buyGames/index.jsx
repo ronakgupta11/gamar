@@ -31,7 +31,7 @@ const index = () => {
               <GameCard
                 description={data.description}
                 title={data.title}
-                image={data.image || "./DefaultGameThumbnail.jpg"}
+                image={data.image || "/DefaultGameThumbnail.jpg"}
               />
             </div>
           );

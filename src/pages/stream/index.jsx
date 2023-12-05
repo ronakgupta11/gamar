@@ -9,7 +9,7 @@ import {
   Textarea,
   Card,
 } from "flowbite-react";
-
+import StreamCard from "@/components/StreamCard"
 export default function Stream() {
   const [streamTitle, setStreamTitle] = useState("");
   const [streamDescription, setStreamDescription] = useState("");
@@ -17,6 +17,8 @@ export default function Stream() {
   const [streamUrl, setStreamUrl] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [liveStreams, setLiveStreams] = useState([]);
+  const [streamExists, setStreamExists] = useState(false)
+  
 
   const titleRef = useRef(null);
   const {
@@ -27,6 +29,7 @@ export default function Stream() {
 
   function onCloseModal() {
     setOpenModal(false);
+    setStreamExists(true)
   }
 
   useEffect(() => {
@@ -41,9 +44,18 @@ export default function Stream() {
     // min-h-[calc(100vh-5rem)]
 
     <main className="min-h-[calc(100vh-4rem)] flex justify-between pt-14 ">
-      <div className=" border-2  border-red-500 grid self-center gap-x-20 gap-y-10   grid-cols-3 py-12 px-4">
-        <Card
-          className="max-w-sm"
+
+      <div className="w-full border-2  border-red-500 grid self-center gap-x-20 gap-y-10   grid-cols-3 py-12 px-4">
+        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
+        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
+        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
+        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
+
+         
+         
+         
+         
+          {/* className="max-w-sm"
           imgAlt="Meaningful alt text for an image that is not purely decorative"
           // imgSrc="/images/blog/image-1.jpg"
         >
@@ -53,15 +65,28 @@ export default function Stream() {
           <p className="font-normal text-gray-700 dark:text-gray-400">
             {streamDescription}
           </p>
-          <Button href={streamUrl}> Go Live! </Button>
-        </Card>
+          <Button href={streamUrl}> Go Live! </Button> */}
       </div>
-      <div className="border-2 w-[25%]">
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div className="border-2 w-[25%] flex flex-col justify-center gap-8 items-center px-12" >
+        {streamExists?(<StreamCard  title={streamTitle} description={streamDescription} image={streamThumbnailUrl} createOrWatch={"create"} />):<div className="text-lg">You haven't created any streams yet :{"("}</div> }
         <Button
-          className="!bg-rose-700 !outline-none  !ring-0 hover:!bg-rose-800"
+          className="!bg-rose-700 !outline-none w-24 whitespace-nowrap px-16 py-1  !ring-0 hover:!bg-rose-800"
           onClick={() => setOpenModal(true)}
         >
-          Create Stream
+          {streamExists?"+ Add":"Create"} Stream
         </Button>
         <Modal
           dismissible

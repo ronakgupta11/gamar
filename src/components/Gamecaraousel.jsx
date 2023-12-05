@@ -40,9 +40,9 @@ const Gamecaraousel = () => {
                 return (
                     <div
                      className='flex justify-center align-middle gap-12'>
-                     <GameCard description={data.description} title={data.title} image={data.image||"./DefaultGameThumbnail.jpg"}/>
-                     <GameCard description={data.description} title={data.title} image={data.image||"./DefaultGameThumbnail.jpg"}/>
-                     <GameCard description={data.description} title={data.title} image={data.image||"./DefaultGameThumbnail.jpg"}/>
+                     <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
+                     <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
+                     <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      </div>
                      )
                
