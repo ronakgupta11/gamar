@@ -24,16 +24,14 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <UserProvider>
-            {/* <SiteHeader /> */}
+        <WalletPage/>
             <div className="flex-1">
               <Component {...pageProps} />
+            </div> 
+            <div className="w-full  bottom-0">
+            <FooterEl />
             </div>
-            {/* <HomePage /> */}
-            {/* <FeaturesPage /> */}
-            {/* <Toaster /> */}
-            {/* <FooterEl /> */}
-
-          {/* <TailwindIndicator /> */}
+          <TailwindIndicator />
         </UserProvider>
       </ArweaveWalletKit>
     </ThemeProvider>

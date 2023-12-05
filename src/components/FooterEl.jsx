@@ -6,8 +6,8 @@ import { Footer } from 'flowbite-react';
 
 export function FooterEl(){
 return(
-<Footer container className='bg-slate-900 left-0  rounded-br-none rounded-bl-none'>
-<div className="w-full ">
+<Footer container className='bg-slate-900  rounded-br-none rounded-bl-none'>
+<div className="w-full h-15 ">
   <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
     <div>
       {/* <Footer.Brand
@@ -40,14 +40,14 @@ return(
       </div>
     </div>
   </div>
-  <Footer.Divider />
+  {/* <Footer.Divider />
   <div className="w-full sm:flex sm:items-center sm:justify-between">
     <Footer.Copyright href="#" by="gamAr™" year={2023} />
     <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
       
       <Footer.Icon href="https://github.com/ronakgupta11/gamar" icon={BsGithub} />
     </div>
-  </div>
+  </div> */}
 </div>
 </Footer>
 )

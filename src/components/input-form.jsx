@@ -178,7 +178,9 @@ export function InputForm() {
   const licenseValue = form.watch("license");
 
   return (
-    <Form {...form}>
+    <div>
+      <Form {...form}>
+      
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col w-full">
          
           <FormField
@@ -187,11 +189,12 @@ export function InputForm() {
             render={({ field: { onChange: onChangeField, value, ...rest } }) => {
               return (
                 <FormItem>
-                  <FormLabel>
-                    Upload Your Game <span className="text-red-500">*</span>
+                  <FormLabel >
+                    Upload Build File <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
-                    <input
+                    <Input
+                      className="p-0"
                       type="file"
                       webkitdirectory="true"
                       onChange={(e) =>
@@ -199,7 +202,7 @@ export function InputForm() {
                       }
                       {...rest}
                       required
-                    ></input>
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -208,7 +211,7 @@ export function InputForm() {
           />
         
         <div className="flex flex-col md:flex-row w-full gap-5">
-          <div className="w-full md:w-1/2 space-y-5">
+          <div className="w-full md:w-1/2 space-y-10">
             <FormField
               control={form.control}
               name="title"
@@ -341,5 +344,6 @@ export function InputForm() {
         </Button>
       </form>
     </Form>
+    </div>
   );
 }
