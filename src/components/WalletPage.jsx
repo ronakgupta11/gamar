@@ -7,7 +7,7 @@ import {
   import { useEffect, useState } from "react";
   import { getBalance } from "arweavekit/wallet";
   import { Navbar, Button } from "flowbite-react";
-  
+  import Link from "next/link";
   function WalletPage() {
     const [transaction, setTransaction] = useState();
   
@@ -42,16 +42,22 @@ import {
         <div fluid rounded className=" bg-rose-700 left-0 top-0 absolute w-full flex justify-between px-4 py-1">
           <div href="#" className="flex">
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              gamAr
+              <Link href={"/"}>
+              GameAr
+              </Link>
             </span>
           </div>
   
           <div className="flex items-center gap-7 text-white">
             <div href="#" active className="!text-white !self-center !flex ">
+              <Link href="/sellGame">
               Sell Games
+              </Link>
             </div>
             <div href="#">
-              Buy Games
+             <Link href={"/buyGames"}>
+             Buy Games
+             </Link>
             </div>
             <div href="#">Arcade</div>
             <div href="#">Stream</div>
