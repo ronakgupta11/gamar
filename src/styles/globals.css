@@ -85,3 +85,17 @@
 .grid-auto-fit {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+@layer utilities {
+
+  .clipperHorizontal {
+  clip-path: polygon(0 0, 100% 0, 85% 10%, 15% 10%);
+}
+
+ .clipperVertical{
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
+
+ }
+
+
+}

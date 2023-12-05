@@ -4,8 +4,12 @@ import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ArweaveWalletKit } from "arweave-wallet-kit";
 import { Footer } from "@/components/footer";
+import {FooterEl} from "@/components/FooterEl"
 import { Toaster } from "@/components/ui/toaster";
 import { UserProvider } from "@/hooks/useUser";
+import WalletPage from "@/components/WalletPage";
+import { HomePage } from "@/components/HomePage";
+import FeaturesPage from "@/components/FeaturesPage";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -20,16 +24,16 @@ export default function App({ Component, pageProps }) {
         }}
       >
         <UserProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
+            {/* <SiteHeader /> */}
             <div className="flex-1">
               <Component {...pageProps} />
             </div>
-            <Toaster />
-            <Footer />
-          </div>
+            {/* <HomePage /> */}
+            {/* <FeaturesPage /> */}
+            {/* <Toaster /> */}
+            {/* <FooterEl /> */}
 
-          <TailwindIndicator />
+          {/* <TailwindIndicator /> */}
         </UserProvider>
       </ArweaveWalletKit>
     </ThemeProvider>
