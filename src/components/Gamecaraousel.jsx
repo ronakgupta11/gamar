@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect ,useState} from 'react'
 import { Carousel } from 'flowbite-react'
 import GameCard from './GameCard'
-
+import { fetchAllGames } from '../../query/fetchGames';
 const gameData = [
     {
       title: "Jump Dash",
@@ -17,12 +17,22 @@ const gameData = [
     }
   ];
 const Gamecaraousel = () => {
+
+    const [games,setGames]=useState('')
+    useEffect(()=>{
+        const getGames = async ()=>{
+          const data= await fetchAllGames()
+          setGames(data)
+          console.log(data)
+        }
+        getGames()
+    },[])
   return (
     <>
      <div 
       style={{height:"30rem"}}
      className="h-66 sm:h-64 xl:h-80 2xl:h-96">
-       <Carousel slideInterval={5000}>
+       <Carousel slideInterval={3000}>
        {
         gameData.map(
             (data,index)=>{

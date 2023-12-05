@@ -36,9 +36,9 @@ export default function PlayPage({gameLink}) {
           <div className="absolute top-0 left-0 right-0 bottom-0 z-10 "
           
           >
-            {gameLink && <iframe 
+            { <iframe 
             className="w-full h-full z-50 "
-            src={gameLink} frameborder="0">
+            src={"https://76pdzit2im7ck2mwkpn2otlvxicfhtw7ugk6omjmy4unghkipfoa.arweave.net/_548onpDPiVpllPbp011ugRTzt-hlecxLMco0x1IeVw/"} frameborder="0">
             </iframe>}
             <Image
               src="/arcadebg.jpg"

@@ -6,7 +6,7 @@ const features = () => {
   return (
     <>
       <div
-        className="my-20 "
+        className=" "
       >
         <h1 className="text-5xl text-center" >Upload Your Game</h1>
         <div className="my-10 m-5 flex justify-center ">
