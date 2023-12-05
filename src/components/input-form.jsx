@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { WebIrys } from "@irys/sdk";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -36,41 +36,72 @@ const imageSchema = z
   .any()
   .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), `.jpg, .jpeg, .png and .webp files are accepted`);
 
-const formSchema = z.object({
-  image: imageSchema,
-  title: z.string(),
-  creatorName: z.string().optional(),
-  description: z.string().optional(),
-  license: z.string().optional(),
-  payment: z.string().optional(),
-  tags: z
-    .array(
-      z.object({
-        value: z.string(),
-      })
-    )
-    .optional(),
-  // license: z.string().optional(),
-});
+  const formSchema = z.object({
+    file: z.any(),
+    title: z.string(),
+    description: z.string().optional(),
+    license: z.string().optional(),
+    payment: z.string().optional(),
+    tags: z
+      .array(
+        z.object({
+          value: z.string(),
+        })
+      )
+      .optional(),
+    // license: z.string().optional(),
+  });
 
 export function InputForm() {
   const { connected, address: activeAddress } = useUser();
   const [preview, setPreview] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [files,setFile]=useState([])
 
   // defining form based on zod schema
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
-      creatorName: "",
       description: "",
       license: "default",
       payment: "",
       tags: [],
     },
   });
+  const calculateFolderSize = async (directory) => {
+    let totalSize = 0;
 
+    for (const item of directory) {
+      if (item.isDirectory) {
+        const subdirectory = await calculateFolderSize(item.createReader());
+        totalSize += subdirectory;
+      } else {
+        totalSize += item.size;
+      }
+    }
+
+    return totalSize;
+  };
+
+ 
+  const getWebIrys = async () => {
+    
+    const arconnect = window.arweaveWallet;
+    await arconnect.connect(["ACCESS_ADDRESS", "ACCESS_PUBLIC_KEY", "SIGN_TRANSACTION", "SIGNATURE","DISPATCH"]);
+    const webIrys = new 
+      WebIrys(
+          { url: "node1", token: "arweave", wallet: { provider: arconnect } }
+          
+          );
+      console.log(webIrys)
+      console.log(arconnect)
+    await webIrys.ready();
+      if(webIrys){
+  
+          return webIrys;
+      }
+  };
   const { fields, append, remove } = useFieldArray({
     name: "tags",
     control: form.control,
@@ -82,31 +113,48 @@ export function InputForm() {
     // This will be type-safe and validated.
     setIsLoading(true);
     try {
-      const transactionId = await postAsset({
-        file: values.image,
-        title: values.title,
-        description: values.description || "",
-        license: values.license || "default",
-        payment: values.payment || "",
-        tags: values.tags || [],
-        creatorName: values.creatorName || "",
-        creatorId: activeAddress || "",
-      });
-      toast({
-        title: "Success!",
-        description: `Atomic asset uploaded!`,
-        action: (
-          <ToastAction
-            altText="View Transaction"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(`https://ar-io.dev/${transactionId}`, "_blank");
-            }}
-          >
-            View Transaction
-          </ToastAction>
-        ),
-      });
+      const inputTags = [
+    { name: "Content-Type",value: "application/x.arweave-manifest+json" },
+    // { name: "Indexed-By", value: "ucm" },
+    { name: "License", value: "yRj4a5KMctX_uOmKWCFJIjmY8DeJcusVk6-HzLiM_t8" },
+    {name :"License-Fee",value:values.payment},
+    { name: "App-Name", value: "GamAr" },
+    { name: "App-Version", value: "0.0.1" },
+    {  name: "Creator-Address",value: activeAddress},
+    { name: "Title", value: values.title },
+    { name: "Description",value:values.description},
+    ]
+    //getting irys balance 
+    const irys = await getWebIrys()
+    const atomicBalance = await irys.getLoadedBalance();
+    console.log(`Node balance (atomic units) = ${atomicBalance}`);
+    //convert balance to standard
+    const convertedBalance = irys.utils.fromAtomic(atomicBalance);
+    console.log(`Node balance (converted) = ${convertedBalance}`);
+ 
+    const folderSize = await calculateFolderSize(files);
+        const bytes = folderSize
+        const priceAtomic = await irys.getPrice(bytes)
+        const priceConverted =  irys.utils.fromAtomic(priceAtomic)
+        console.log(`uploading ${priceConverted}`)
+    //finding nodes
+    if(convertedBalance<=priceConverted)
+    {
+    const fundTx = await irys.fund(irys.utils.toAtomic(priceConverted-convertedBalance+0.0001));
+    
+		console.log(`Successfully funded ${irys.utils.fromAtomic(fundTx.quantity)} ${irys.token}`);
+            
+            }
+            const receipt = await irys.uploadFolder(files, {
+              indexFileRelPath:"dist/index.html",
+              manifestTags:inputTags
+
+            }
+              
+          ); //returns the manifest ID
+    //upload confirmation
+     console.log(`Files uploaded. Manifest Id=${receipt.manifestId} Receipt Id=${receipt.id}`);
+     
     } catch (error) {
       console.log(error);
       toast({
@@ -132,19 +180,7 @@ export function InputForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex flex-col w-full">
-        {preview ? (
-          <div className="w-full flex flex-col gap-6">
-            <AspectRatio ratio={16 / 9} className="w-1/2 md:w-1/3 mx-auto">
-              <Image src={preview} alt="Image" objectFit="contain" layout="fill" className="rounded-md object-cover" />
-            </AspectRatio>
-            <Button
-              className={cn(buttonVariants({ variant: "secondary" }), "hover:text-red-500")}
-              onClick={() => setPreview("")}
-            >
-              Clear Image
-            </Button>
-          </div>
-        ) : (
+         
           <FormField
             control={form.control}
             name="image"
@@ -152,33 +188,25 @@ export function InputForm() {
               return (
                 <FormItem>
                   <FormLabel>
-                    Image <span className="text-red-500">*</span>
+                    Upload Your Game <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
-                    <Input
+                    <input
                       type="file"
-                      accept={ACCEPTED_IMAGE_TYPES.join(",")}
+                      webkitdirectory="true"
                       onChange={(e) =>
-                        onChangeField(
-                          e.target.files
-                            ? (() => {
-                                const file = e.target.files?.[0];
-                                setPreview(URL.createObjectURL(file));
-                                return file;
-                              })()
-                            : null
-                        )
+                         setFile(e.target.files)
                       }
                       {...rest}
                       required
-                    />
+                    ></input>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               );
             }}
           />
-        )}
+        
         <div className="flex flex-col md:flex-row w-full gap-5">
           <div className="w-full md:w-1/2 space-y-5">
             <FormField
@@ -191,19 +219,6 @@ export function InputForm() {
                   </FormLabel>
                   <FormControl>
                     <Input placeholder="title" {...field} required />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="creatorName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Creator</FormLabel>
-                  <FormControl>
-                    <Input placeholder="creator name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
