@@ -1,4 +1,8 @@
+import { queryAllTransactionsGQL } from "arweavekit/graphql";
+
+
 export const fetchAllGames= async ()=>{
+    
     const graphqlQuery=`
       query {
         transactions(tags: {
@@ -18,16 +22,12 @@ export const fetchAllGames= async ()=>{
         }
     }
     `
-    const apiUrl ='https://arweave.net/graphql'
-    console.log('fetching data...')
-    const result = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query: graphqlQuery }),
-      })
+    const result = await queryAllTransactionsGQL(graphqlQuery, {
+        gateway: "arweave.net",
+        filters: {},
+      });
+      
      console.log(result)
-      const res= await result.json()
-      return res?.data
+    
+      return result
 }
