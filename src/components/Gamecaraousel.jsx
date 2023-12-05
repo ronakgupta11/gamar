@@ -18,15 +18,7 @@ const gameData = [
   ];
 const Gamecaraousel = () => {
 
-    const [games,setGames]=useState('')
-    useEffect(()=>{
-        const getGames = async ()=>{
-          const data= await fetchAllGames()
-          setGames(data)
-          console.log(data)
-        }
-        getGames()
-    },[])
+    
   return (
     <>
      <div 

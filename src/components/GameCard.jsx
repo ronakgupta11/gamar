@@ -9,7 +9,7 @@ function GameCard({image,title,description}) {
     <Card
       style={{height:"28rem"}}
       className="max-w-sm p-3 "
-      renderImage={() => <Image  className="self-center" width={300} height={300} src='/DefaultGameThumbnail.jpg' alt="image 1" />}
+      renderImage={() => <Image  className="self-center" width={300} height={300} objectFit='cover' src={image} alt="image 1" />}
     >
       <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}

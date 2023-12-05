@@ -1,7 +1,8 @@
 import Gamecaraousel from "@/components/Gamecaraousel";
 import React from "react";
+import { useState,useEffect } from "react";
 import GameCard from "@/components/GameCard";
-
+import { fetchAllGames } from "../../../query/fetchGames";
 const gameData = [
   {
     title: "Jump Dash",
@@ -21,17 +22,28 @@ const gameData = [
 ];
 
 const index = () => {
+  
+  const [games,setGames]=useState([])
+    useEffect(()=>{
+        const getGames = async ()=>{
+          const data= await fetchAllGames()
+          setGames(data)
+          console.log("game result",data)
+        }
+        getGames()
+    },[])
+
   return (
     <>
       <div className="pt-24  text-center text-3xl">Trending Titles</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-10 mt-6 pt-2   gap-6 ">
-        {gameData.map((data, index) => {
+        {games.map((data, index) => {
           return (
             <div className="flex justify-center align-middle gap-12  border-">
               <GameCard
                 description={data.description}
                 title={data.title}
-                image={data.image || "./DefaultGameThumbnail.jpg"}
+                image={'https://node1.irys.xyz/K9c2mce-ndeQlJ1kwEqGIfEqpcBjILXTf3LojHARYA8/dist/assets/bank-panic/bank-panic.png' || "./DefaultGameThumbnail.jpg"}
               />
             </div>
           );
