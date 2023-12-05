@@ -10,9 +10,16 @@ import { UserProvider } from "@/hooks/useUser";
 import WalletPage from "@/components/WalletPage";
 import { HomePage } from "@/components/HomePage";
 import FeaturesPage from "@/components/FeaturesPage";
+import { LivepeerConfig, createReactClient, studioProvider } from '@livepeer/react';
+
+const client = createReactClient({
+  provider: studioProvider({ apiKey: '29d3b6bc-523c-46bc-86e6-8a6d1fe02207' }),
+});
 
 export default function App({ Component, pageProps }) {
   return (
+    <LivepeerConfig client={client}>
+
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <ArweaveWalletKit
         config={{
@@ -34,5 +41,7 @@ export default function App({ Component, pageProps }) {
         </UserProvider>
       </ArweaveWalletKit>
     </ThemeProvider>
+    </LivepeerConfig>
+
   );
 }
