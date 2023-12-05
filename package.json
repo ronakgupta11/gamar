@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@irys/sdk": "^0.1.1",
+    "@livepeer/react": "^3.0.10",
     "@permaweb/stampjs": "^0.5.7",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -22,6 +23,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
+    "arlocal": "^1.1.63",
     "arweave": "^1.14.4",
     "arweave-wallet-kit": "^1.0.3",
     "arweavekit": "^1.5.1",
@@ -40,7 +42,7 @@
     "sharp": "^0.31.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
-    "warp-contracts": "^1.4.21",
+    "warp-contracts": "^1.4.26",
     "warp-contracts-plugin-signature": "^1.0.17",
     "zod": "^3.22.4"
   },
@@ -53,7 +55,7 @@
     "replace-in-file": "^7.0.1",
     "tailwindcss": "^3",
     "typescript": "^5",
-    "warp-contracts-plugin-deploy": "^1.0.9"
+    "warp-contracts-plugin-deploy": "^1.0.12"
   },
   "caaMetadata": {
     "initVersion": "0.1.4"
