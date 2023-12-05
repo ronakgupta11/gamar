@@ -8,12 +8,13 @@ export function HomePage(){
 
         <div 
          style={{
-            backgroundImage: `url('/gameBG2.jpg')` ,
+            backgroundImage: `url('/gameBGtest.jpg')` ,
             backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          
          
         }}
-        className="text-white min-h-screen pt-16 gap-5 border-2 flex flex-col px-4 pb-4 -z-20     bg-contain justify-center items-center" > 
+        className="text-white min-h-screen pt-16 gap-5  flex flex-col px-4 pb-4 -z-20     bg-contain justify-center items-center" > 
             
             <div className="flex h-40 lg:py-10 text-7xl flex-col px-2 text-center">
 

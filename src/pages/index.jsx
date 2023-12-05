@@ -11,13 +11,13 @@ export default function IndexPage() {
       <Head>
         <title>{`Home - ${siteConfig.name}`}</title>
       </Head>
-      
+
       <HomePage />
-      <Gamecaraousel/>
+      <div className="h-16  text-3xl text-center mt-16">Trending Titles</div>
+      <Gamecaraousel />
+      <div className="text-3xl text-center mt-20">Our Features</div>
       <FeaturesPage />
-      <div className="flex">
-      
-      </div>
+      <div className="flex"></div>
     </>
   );
 }

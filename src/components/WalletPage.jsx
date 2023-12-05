@@ -39,7 +39,7 @@ import {
   
     return (
       <>
-        <div fluid rounded className=" bg-rose-700 left-0 top-0 absolute w-full flex justify-between px-4 py-1">
+        <div fluid rounded className=" bg-rose-700 left-0 top-0 fixed z-50 w-full flex justify-between px-4 py-1">
           <div href="#" className="flex">
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               <Link href={"/"}>
