@@ -31,7 +31,7 @@ const Gamecaraousel = () => {
     <>
      <div 
       style={{height:"30rem"}}
-     className="h-66 sm:h-64 xl:h-80 2xl:h-96">
+     className=" ">
        <Carousel slideInterval={3000}>
        {
         gameData.map(

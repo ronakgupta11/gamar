@@ -6,7 +6,7 @@ import { Footer } from 'flowbite-react';
 
 export function FooterEl(){
 return(
-<Footer container className='bg-slate-900  rounded-br-none rounded-bl-none'>
+<Footer container className='bg-slate-900 rounded-t-sm rounded-br-none rounded-bl-none'>
 <div
  
  >

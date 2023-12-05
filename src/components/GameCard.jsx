@@ -17,7 +17,7 @@ function GameCard({image,title,description}) {
       <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
         {description}
       </p>
-      <Button className='w-23 h-10 bg-rose-700 '>Buy Now!</Button>
+      <Button className='w-23 h-10 !bg-rose-600 '>Buy Now!</Button>
     </Card>
   );
 }
