@@ -8,6 +8,7 @@ import {
   import { getBalance } from "arweavekit/wallet";
   import { Navbar, Button } from "flowbite-react";
   import Link from "next/link";
+import Image from "next/image";
   function WalletPage() {
     const [transaction, setTransaction] = useState();
   
@@ -41,13 +42,14 @@ import {
       <>
         <div fluid rounded className=" bg-rose-700 left-0 top-0 fixed z-50 w-full flex justify-between px-4 py-1">
           <div href="#" className="flex">
-            <span className="self-center font-  whitespace-nowrap text-2xl leading-loose tracking-wide dark:text-white font-extrabold">
+            <span className="self-center lg:mx-12 font-  whitespace-nowrap text-2xl leading-loose tracking-wide dark:text-white font-extrabold">
               <Link 
                style={{fontFamily:"cursive",
-               fontSize:"2rem"
-              
+               
+               display:"flex"
               }}
               href={"/"}>
+              <Image width={50} height={50} src={"/arcade.png"}/>
                GameAr
               </Link>
             </span>
