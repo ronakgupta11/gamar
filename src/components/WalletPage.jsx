@@ -61,7 +61,7 @@ import {
             </div>
             <div href="/arcade">
               <Link href="/arcade">Arcade</Link></div>
-            <div href="#">Stream</div>
+            <div href="/stream">Stream</div>
   
             <ConnectButton
               accent="rgb(255 18 60)"

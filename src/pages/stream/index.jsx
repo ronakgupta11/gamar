@@ -105,7 +105,7 @@ export default function Stream() {
           <div>{createdStreamCards}</div>
         ) : (
           <div className="text-lg">
-            You haven't created any streams yet :{"("}
+            You haven&apos;t created any streams yet :{"("}
           </div>
         )}
         <Button
