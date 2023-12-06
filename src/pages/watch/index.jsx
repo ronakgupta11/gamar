@@ -10,7 +10,7 @@ function WatchStream() {
   const title = router.query.title;
   console.log(id, title);
 
-  if (id) {
+
     const { data: asset, isError, error } = useStream(id);
     console.log(asset);
 
@@ -24,7 +24,7 @@ function WatchStream() {
             />
       </div>
     );
-  }
+  
   // const {data:asset,isError,error} = useStream(id)
   // console.log(asset)
   // const {id} =  useLoaderData();
