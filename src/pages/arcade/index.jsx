@@ -1,6 +1,13 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-export default function PlayPage({gameLink}) {
+
+
+export default function PlayPage() {
+
+  const router = useRouter()
+  const link  = router.query.link
+  console.log(link)
   return (
     <main className="py-15"
      style={{marginBottom:"10rem"}}
@@ -30,13 +37,15 @@ export default function PlayPage({gameLink}) {
           </div>
 
           {/* Overlay Image Container */}
-          <div className="absolute top-0  left-0 right-0 bottom-0 z-10 "
+          <div className="absolute top-0 left-0 right-0 bottom-0 z-10 overflow-hidden"
+          style={{ touchAction: 'manipulation' }}
           
           >
             { <iframe 
             scrolling="no"
-            className="w-full h-full z-50 rounded-3xl "
-            src={"https://76pdzit2im7ck2mwkpn2otlvxicfhtw7ugk6omjmy4unghkipfoa.arweave.net/_548onpDPiVpllPbp011ugRTzt-hlecxLMco0x1IeVw/"} frameborder="0">
+            scro
+            className="w-full h-full z-50 rounded-3xl overflow-hidden  "
+            src={link} frameborder="0">
             </iframe>}
             <Image
               src="/arcadebg.jpg"
