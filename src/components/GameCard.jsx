@@ -35,7 +35,7 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
   
   return (
     <Card
-      style={{ height: "30rem" }}
+      style={{  }}
       className="max-w-sm p-3 "
       renderImage={() => <Image  className="self-center" width={300} height={300} src={image} alt="image 1" />}
     >
