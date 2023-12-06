@@ -19,9 +19,14 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link}) {
       const getPaidStatus= async (creatorAddress,licenseFee)=>{
         const ownerAddress= await getActiveAddress()
         console.log(creatorAddress,ownerAddress)
-         confirmTransactions(ownerAddress,creatorAddress,licenseFee)
+        const status = await confirmTransactions(ownerAddress,creatorAddress,licenseFee) 
+        setPaidStatus(status)
+         
       }
-      setPaidStatus(getPaidStatus(creatorAddress, "0.1"))
+
+      getPaidStatus(creatorAddress, "0.003")
+      
+      
     }
   },[])
   return (
