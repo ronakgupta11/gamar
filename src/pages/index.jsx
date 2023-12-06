@@ -13,7 +13,7 @@ export default function IndexPage() {
       </Head>
 
       <HomePage />
-      <div className="h-16  text-3xl text-center mt-16 font-space">Trending Titles</div>
+      <div className="h-16  text-3xl text-center mt-16 font-space">Trending Now!</div>
       <Gamecaraousel />
       <div className="text-3xl text-center mt-20 font-space">Our Features</div>
       <FeaturesPage />

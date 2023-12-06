@@ -1,6 +1,7 @@
 import { Button } from "flowbite-react"
 import Image from "next/image"
 import gamebg from '../../public/gameBG.jpg'
+import Link from "next/link"
 export function HomePage(){
 
     return (
@@ -21,7 +22,7 @@ export function HomePage(){
             <div>Revive the</div> 
             <div><span className="text-rose-500">Arcade</span> Rush</div>
             </div>
-            <Button className=" lg:my-8 w-24 h-min whitespace-nowrap !bg-rose-600 hover:!bg-rose-700 hover:!cursor-pointer">Play Now</Button>
+            <Button className=" lg:my-8 w-24 h-min whitespace-nowrap !bg-rose-600 hover:!bg-rose-700 hover:!cursor-pointer" ><Link href="/buyGames">Play Now</Link></Button>
         </div>
         </>
     )

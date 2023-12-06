@@ -41,9 +41,14 @@ import {
       <>
         <div fluid rounded className=" bg-rose-700 left-0 top-0 fixed z-50 w-full flex justify-between px-4 py-1">
           <div href="#" className="flex">
-            <span className="self-center font-extrabold  whitespace-nowrap text-2xl font-mono leading-loose tracking-wide dark:text-white">
-              <Link href={"/"}>
-              GamAr
+            <span className="self-center font-  whitespace-nowrap text-2xl leading-loose tracking-wide dark:text-white font-extrabold">
+              <Link 
+               style={{fontFamily:"cursive",
+               fontSize:"2rem"
+              
+              }}
+              href={"/"}>
+               GameAr
               </Link>
             </span>
           </div>
