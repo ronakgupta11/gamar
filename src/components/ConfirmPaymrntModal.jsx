@@ -9,25 +9,30 @@ function ConfirmPaymentModal({creatorAddress,licenseFee,title}) {
   const [openModal, setOpenModal] = useState(false);
 
   const handleBuyStream = async (creatorAddress,licenseFee)=>{
-    console.log(await getBalance({ address: address }));
+    console.log(await getBalance({ address: creatorAddress }));
       if (creatorAddress) {
-      console.log(address);
-      const tempTransaction = await createTransaction({
-        type: "wallet",
-        environment: "mainnet",
-        target: creatorAddress,
-        key: "use_wallet",
-        quantity: licenseFee,
-        options: { signAndPost: false },
-      });
-      const signedTransaction = await signTransaction({
-        createdTransaction: tempTransaction,
-        environment: 'mainnet'
-      });
-      const postedTransaction = await postTransaction({
-        transaction: signTransaction,
-        environment: 'mainnet',
-    })
+      console.log(creatorAddress);
+      try {
+        const tempTransaction = await createTransaction({
+            type: "wallet",
+            environment: "mainnet",
+            target: creatorAddress,
+            key: "use_wallet",
+            quantity: (licenseFee),
+            options: { signAndPost: false },
+          });
+          const signedTransaction = await signTransaction({
+            createdTransaction: tempTransaction,
+            environment: 'mainnet'
+          });
+          const postedTransaction = await postTransaction({
+            transaction: signedTransaction,
+            environment: 'mainnet',
+        })
+        console.log(postedTransaction)
+      } catch (error) {
+        console.log(error)
+      }
     }
     
   }
@@ -44,21 +49,31 @@ function ConfirmPaymentModal({creatorAddress,licenseFee,title}) {
                 <h1>Game :</h1>
                 <h1>{title} </h1>
             </div>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
-              companies around the world are updating their terms of service agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
-              to ensure a common set of data rights in the European Union. It requires organizations to notify users as
-              soon as possible of high-risk data breaches that could personally affect them.
-            </p>
+            <div>
+                <h1>
+                Creator ID :
+                </h1>
+                <h1 className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              {creatorAddress}
+            </h1>
+            </div>
+            <div>
+                <h1>
+                Fees :
+                </h1>
+            <h1 className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              {licenseFee/10000000000 } AR
+            </h1>
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => setOpenModal(false)}>I accept</Button>
+          <Button onClick={() => {
+            handleBuyStream("kfMKC_j20hamu9atdBV240QgPIJjFjYzRWLkyt04zNE",licenseFee)
+            setOpenModal(false)}
+          }>Pay</Button>
           <Button color="gray" onClick={() => setOpenModal(false)}>
-            Decline
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>

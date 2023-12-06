@@ -26,7 +26,7 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
          
       }
 
-      getPaidStatus(creatorAddress, "0.002")
+      getPaidStatus(creatorAddress, "0.0023")
       
       
     }
@@ -45,6 +45,13 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
       <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
         {description}
       </p>
+      <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
+        License : UDL-{paymentType||"One Time "}
+      </p>
+      <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
+        License Fee : {licenseFee||"0.0001"} AR
+      </p>
+      
 
       {paidStatus ? (
         <Link href={{ pathname: `/arcade`, query: { link: link } }}>
@@ -54,11 +61,9 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
 
         <Link href="#">
          
-        <ConfirmPaymentModal title={title} creatorAddress={creatorAddress} licenseFee={licenseFee}/>
+        <ConfirmPaymentModal title={title} creatorAddress={creatorAddress} licenseFee={licenseFee||String(0.0001*1000000000000)}/>
 
-        <b className="font-normal text-sm text-gray-700 dark:text-gray-400 my-10">
-           {paymentType||"One Time "} payment of {licenseFee||"0.0001"} Ar
-      </b>
+       
         </Link>
 
         )}
