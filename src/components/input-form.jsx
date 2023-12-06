@@ -259,8 +259,8 @@ export function InputForm() {
                           <SelectGroup>
                             <SelectLabel>License Options</SelectLabel>
                             <SelectItem value="free">UDL Default Public Use</SelectItem>
-                            <SelectItem value="oneTime">UDL Public Use - Monthly Payment</SelectItem>
-                            <SelectItem value="monthly">UDL Public Use - One Time Payment</SelectItem>
+                            <SelectItem value="monthly">UDL Public Use - Monthly Payment</SelectItem>
+                            <SelectItem value="oneTime">UDL Public Use - One Time Payment</SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>

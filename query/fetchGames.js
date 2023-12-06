@@ -52,16 +52,17 @@ export const fetchAllGames= async ()=>{
      const result = response.map((edges) => {
         const tags = edges.node.tags;
         const contentType=findTagValue("Content-Type",tags).split('/')[0]
-        console.log(contentType)
         return {
           id: edges.node.id,
           title: findTagValue("Title", tags) || "",
           description: findTagValue("Description", tags) || "",
           license: determineLicense(tags),
+          paymentType:findTagValue("License-Type",tags),
           creatorId:findTagValue("Creator-Address",tags),
           contentType : contentType
         };
       });
-    
+      
+      console.log(result)
       return result
 }

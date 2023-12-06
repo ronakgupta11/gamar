@@ -58,6 +58,7 @@ const Index = () => {
                 title={data.title}
                 image={img()}
                 licenseFee={data.licenseFee||"0.0001"}
+                paymentType={data.paymentType}
               />
             </div>
           );
