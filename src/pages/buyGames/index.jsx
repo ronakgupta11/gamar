@@ -39,13 +39,24 @@ const Index = () => {
       <div className="pt-24  text-center text-3xl font-mono">Arcade Arena</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-10 mt-6 pt-2   gap-6 ">
         {games.map((data, index) => {
+
+          const img = ()=>{ if(data.title == "Bank Panic"){
+            return "https://node1.irys.xyz/rv3o8M1CE0vp9uESIoOnAkyoW9ynj_WrC9Lyz9MFkW8/dist/assets/bank-panic/title.png"
+          }
+          if (data.title == "Snowmen-Attack"){
+            return "https://node1.irys.xyz/adubds1c1zu13pzixvd4Rs-UxCZy92jcdYFoaugji-Q/dist/assets/snowmen-attack/title.png"
+          }
+          
+        
+        }
+          
           return (
             <div className="flex justify-center align-middle gap-12  border-" key={index}>
               <GameCard
               creatorAddress={data.creatorId}
                 description={data.description}
                 title={data.title}
-                image={"https://node1.irys.xyz/rv3o8M1CE0vp9uESIoOnAkyoW9ynj_WrC9Lyz9MFkW8/dist/assets/bank-panic/title.png" || "/DefaultGameThumbnail.jpg"}
+                image={img()}
                 licenseFee={data.licenseFee||"0.0001"}
               />
             </div>
