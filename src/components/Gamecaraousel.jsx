@@ -31,7 +31,7 @@ const Gamecaraousel = () => {
                 console.log(data)               
                 return (
                     <div
-                     className='flex justify-center align-middle gap-12'>
+                     className='flex justify-center align-middle gap-12' key={index}>
                      <GameCard description={data.description} title={data.title}  image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
