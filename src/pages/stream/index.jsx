@@ -89,7 +89,7 @@ export default function Stream() {
           {streamExists?"+ Add":"Create"} Stream
         </Button>
         <Modal
-          dismissible
+          
           show={openModal}
           size="md"
           onClose={onCloseModal}

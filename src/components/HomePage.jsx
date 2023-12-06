@@ -16,7 +16,7 @@ export function HomePage(){
         }}
         className="text-white min-h-screen pt-16 gap-5  flex flex-col px-4 pb-4 -z-20     bg-contain justify-center items-center" > 
             
-            <div className="flex h-40 lg:py-10 text-7xl flex-col px-2 text-center">
+            <div className="flex h-40 lg:py-10 text-7xl flex-col px-2 text-center font-bold">
 
             <div>Revive the</div> 
             <div><span className="text-rose-500">Arcade</span> Rush</div>
