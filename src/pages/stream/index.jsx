@@ -1,15 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { useCreateStream } from "@livepeer/react";
+import copy from "copy-to-clipboard";
+import {PiClipboardTextLight} from "react-icons/pi"
+import create from "@/lib/createStream";
+import { useActiveAddress } from "arweave-wallet-kit";
 import {
   Button,
   Label,
+  Spinner,
   Modal,
   TextInput,
   Textarea,
-  Card,
 } from "flowbite-react";
 import StreamCard from "@/components/StreamCard"
+import userStream from "@/lib/generatedStream";
+import LiveStream from "@/lib/liveStreams";
 export default function Stream() {
   const [streamTitle, setStreamTitle] = useState("");
   const [streamDescription, setStreamDescription] = useState("");
@@ -17,9 +23,14 @@ export default function Stream() {
   const [streamUrl, setStreamUrl] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [liveStreams, setLiveStreams] = useState([]);
+  const [genStreams, setGenStreams] = useState([]);
   const [streamExists, setStreamExists] = useState(false)
-  
-
+  const [isLoading,setIsLoading] = useState(false)
+  const copyToClipboard = () => {
+    copy(createdStream?.streamKey);
+    alert(`copied stream-key`);
+}
+const address = useActiveAddress()
   const titleRef = useRef(null);
   const {
     mutateAsync: createStream,
@@ -33,12 +44,35 @@ export default function Stream() {
   }
 
   useEffect(() => {
-    async function fetch() {
+    async function fetchLive() {
       // read contract herer
+      const resp = await LiveStream()
+      return resp
     }
 
-    fetch().then((v) => setLiveStreams(v?.streams));
-  }, []);
+    fetchLive().then((v) => setLiveStreams(v?.result));
+
+    async function fetchGenerated(){
+      const resp = await userStream(address)
+return resp
+    }
+    fetchGenerated().then(v=>setGenStreams(v?.result))
+  }, [address]);
+
+
+  const createdStreamCards = genStreams?.map(s=>{
+    // console.log(s)
+    return(
+      <StreamCard id={s?.key} key = {s?.key} title={s?.title} description={s?.desc} image={s?.thumbnailUrl} streamUrl = {s?.streamUrl} createOrWatch={"create"} />
+    )
+  })
+
+  const liveStreamCards = liveStreams?.map(s=>{
+    // console.log(s)
+    return(
+      <StreamCard key = {s?.key} id={s?.key} title={s?.title} description={s?.desc} streamUrl={s?.streamUrl} image={s?.thumbnailUrl} createOrWatch={"watch"} />
+    )
+  })
 
   return (
     // min-h-[calc(100vh-5rem)]
@@ -46,26 +80,9 @@ export default function Stream() {
     <main className="min-h-[calc(100vh-4rem)] flex justify-between pt-14 ">
 
       <div className="w-full border-2  border-red-500 grid self-center gap-x-20 gap-y-10   grid-cols-3 py-12 px-4">
-        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
-        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
-        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
-        <StreamCard createOrWatch={"watch"} title="randomTitle" description={"randomdesc"} image={"https://media.istockphoto.com/id/1470130937/photo/young-plants-growing-in-a-crack-on-a-concrete-footpath-conquering-adversity-concept.webp?b=1&s=170667a&w=0&k=20&c=IRaA17rmaWOJkmjU_KD29jZo4E6ZtG0niRpIXQN17fc="} />
-
-         
-         
-         
-         
-          {/* className="max-w-sm"
-          imgAlt="Meaningful alt text for an image that is not purely decorative"
-          // imgSrc="/images/blog/image-1.jpg"
-        >
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {streamTitle}
-          </h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
-            {streamDescription}
-          </p>
-          <Button href={streamUrl}> Go Live! </Button> */}
+       {console.log("liveStream",liveStreams)}
+       {liveStreamCards}
+        {/* {createdStreamCards} */}
       </div>
 
 
@@ -81,7 +98,7 @@ export default function Stream() {
 
 
       <div className="border-2 w-[25%] flex flex-col justify-center gap-8 items-center px-12" >
-        {streamExists?(<StreamCard  title={streamTitle} description={streamDescription} image={streamThumbnailUrl} createOrWatch={"create"} />):<div className="text-lg">You haven't created any streams yet :{"("}</div> }
+        {streamExists? <div>{createdStreamCards}</div> :<div className="text-lg">You haven't created any streams yet :{"("}</div> }
         <Button
           className="!bg-rose-700 !outline-none w-24 whitespace-nowrap px-16 py-1  !ring-0 hover:!bg-rose-800"
           onClick={() => setOpenModal(true)}
@@ -187,12 +204,44 @@ export default function Stream() {
                 </div>
               </div>
             ) : (
-              <div>
-                <p>{createdStream?.streamKey}</p>
-                {/* onCloseModal(); */}
-                <Button onClick={onCloseModal}> copy key </Button>
-                <Button onClick={onCloseModal}> close </Button>
+              // <div>
+              //   <p>{createdStream?.streamKey}</p>
+              //   {/* onCloseModal(); */}
+              //   <Button onClick={onCloseModal}> copy key </Button>
+              //   <Button onClick={onCloseModal}> close </Button>
+              // </div>
+              <div className='flex flex-col items-center justify-center space-y-3'>
+              <p className='text-green-500'>Successfuky Created Stream</p>
+              <p className='text-gray-800 font-medium'>Stream Key</p>
+              <div className='flex items-center space-x-3 rounded-md border border-gray-700 p-2'>
+                  <p>{createdStream?.streamKey}</p>
+                  <button onClick={copyToClipboard}>
+                  <PiClipboardTextLight className='h-6 w-6 text-black'/>
+              </button>
               </div>
+              {!isLoading?<Button className='bg-blue-700 enabled:hover:bg-blue-800 focus:ring-blue-300'   disabled={isLoading|| !create }
+          onClick={() => {
+              create({
+                title:streamTitle,
+                desc:streamDescription,
+                thumbnailUrl:streamThumbnailUrl,
+                streamUrl:streamUrl
+              }).then(()=>onCloseModal())
+
+
+  
+          }}>Broadcast Stream</Button>:
+                <Button disabled={ isLoading || !create  } className='bg-blue-700 enabled:hover:bg-blue-800 focus:ring-blue-300'>
+          <Spinner
+            aria-label="Spinner button example"
+            size="sm"
+          />
+          <span className="pl-3">
+            Loading...
+          </span>
+        </Button>}
+              
+          </div>
             )}
           </Modal.Body>
         </Modal>
