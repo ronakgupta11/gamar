@@ -27,7 +27,7 @@ console.log("Sending 'createStream' interaction...");
 // if you want to switch off automatic mining - set evaluationOptions.mineArLocalBlocks to false, e.g.
 // contract.setEvaluationOptions({ mineArLocalBlocks: false })
 await contract.writeInteraction({function: 'create',data:{
-    key:123,
+        key:123,
         title:"new stream",
         desc:"description",
         thumbnailUrl:"thumbnailUrl",

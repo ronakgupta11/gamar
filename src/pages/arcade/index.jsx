@@ -45,7 +45,7 @@ export default function PlayPage() {
             scrolling="no"
             scro
             className="w-full h-full z-50 rounded-3xl overflow-hidden  "
-            src={link} frameborder="0">
+            src={"https://76pdzit2im7ck2mwkpn2otlvxicfhtw7ugk6omjmy4unghkipfoa.arweave.net/_548onpDPiVpllPbp011ugRTzt-hlecxLMco0x1IeVw/"} frameborder="0">
             </iframe>}
             <Image
               src="/arcadebg.jpg"

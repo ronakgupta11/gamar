@@ -18,7 +18,7 @@ export default function FeaturesPage() {
       </Card>
       <Card className=" " renderImage={()=><BsClock className="ml-8 mt-7 h-28 mr-2" size={140} />} horizontal>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Like the Good Ol' Days
+          Like the Good Ol&apos; Days
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
         Embark on a nostalgic journey as we revive the golden age of arcades with our revolutionary pay-per-play feature. 
@@ -33,7 +33,7 @@ export default function FeaturesPage() {
         Unleash the Gamer in You 
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-        GamAr is more than just a marketplace; it's a celebration of the gaming spirit for both
+        GamAr is more than just a marketplace; it&apos;s a celebration of the gaming spirit for both
         casual and hardcore gamers
         </p>
       </Card>

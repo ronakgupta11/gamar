@@ -5,7 +5,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+// import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+// import { ToastAction } from "@/components/ui/toast";
 import { useUser } from "@/hooks/useUser";
 import { Spinner } from "@/components/spinner";
 import {
@@ -32,9 +32,9 @@ import Link from "next/link";
 const ACCEPTED_IMAGE_TYPES = ["image/gif", "image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 // zod schema for form inputs
-const imageSchema = z
-  .any()
-  .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), `.jpg, .jpeg, .png and .webp files are accepted`);
+// const imageSchema = z
+//   .any()
+//   .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file.type), `.jpg, .jpeg, .png and .webp files are accepted`);
 
   const formSchema = z.object({
     file: z.any(),

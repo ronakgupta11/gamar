@@ -29,6 +29,7 @@
     "arweavekit": "^1.5.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "copy-to-clipboard": "^3.3.3",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.0",
     "lucide-react": "^0.288.0",

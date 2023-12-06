@@ -21,7 +21,7 @@ const gameData = [
   },
 ];
 
-const index = () => {
+const Index = () => {
   
   const [games,setGames]=useState([])
     useEffect(()=>{
@@ -36,11 +36,11 @@ const index = () => {
 
   return (
     <>
-      <div className="pt-24  text-center text-3xl">Trending Titles</div>
+      <div className="pt-24  text-center text-3xl font-mono">Trending Titles</div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-10 mt-6 pt-2   gap-6 ">
         {games.map((data, index) => {
           return (
-            <div className="flex justify-center align-middle gap-12  border-">
+            <div className="flex justify-center align-middle gap-12  border-" key={index}>
               <GameCard
               creatorAddress={data.creatorId}
                 description={data.description}
@@ -56,4 +56,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

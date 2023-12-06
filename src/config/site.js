@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "StarterKit",
-  description: "Create a full-stack, typesafe Arweave app.",
+  name: "GamAr",
+  description: "Redefine the Arcade Rush",
   mainNav: [
     {
       title: "Home",

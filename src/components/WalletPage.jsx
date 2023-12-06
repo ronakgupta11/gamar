@@ -41,7 +41,7 @@ import {
       <>
         <div fluid rounded className=" bg-rose-700 left-0 top-0 fixed z-50 w-full flex justify-between px-4 py-1">
           <div href="#" className="flex">
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            <span className="self-center font-extrabold  whitespace-nowrap text-2xl font-mono leading-loose tracking-wide dark:text-white">
               <Link href={"/"}>
               GamAr
               </Link>
@@ -61,7 +61,7 @@ import {
             </div>
             <div href="/arcade">
               <Link href="/arcade">Arcade</Link></div>
-            <div href="#">Stream</div>
+            <div href="/stream"> <Link href="/stream">Stream</Link></div>
   
             <ConnectButton
               accent="rgb(255 18 60)"

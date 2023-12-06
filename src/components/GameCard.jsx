@@ -26,7 +26,7 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
          
       }
 
-      getPaidStatus(creatorAddress, "0.003")
+      getPaidStatus(creatorAddress, "0.002")
       
       
     }
