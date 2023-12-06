@@ -28,7 +28,8 @@ const index = () => {
         const getGames = async ()=>{
           const data= await fetchAllGames()
           setGames(data)
-          console.log("game result",data)
+          console.log("game result",data[0].creatorId)
+
         }
         getGames()
     },[])
@@ -41,9 +42,11 @@ const index = () => {
           return (
             <div className="flex justify-center align-middle gap-12  border-">
               <GameCard
+              creatorAddress={data.creatorId}
                 description={data.description}
                 title={data.title}
-                image={'https://node1.irys.xyz/K9c2mce-ndeQlJ1kwEqGIfEqpcBjILXTf3LojHARYA8/dist/assets/bank-panic/bank-panic.png' || "./DefaultGameThumbnail.jpg"}
+                image={"" || "/DefaultGameThumbnail.jpg"}
+        
               />
             </div>
           );

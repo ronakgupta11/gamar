@@ -1,10 +1,25 @@
 
 'use client';
-
+import { useState,useEffect } from 'react';
 import { Button, Card } from 'flowbite-react';
 import Image from 'next/image';
+import { confirmTransactions } from '../../query/confirmTransactions';
 
-function GameCard({image,title,description}) {
+import { getActiveAddress } from 'arweavekit/auth';
+// '/DefaultGameThumbnail.jpg
+function GameCard({image,title,description,creatorAddress,licenseFee}) {
+ 
+  useEffect(()=>{
+    if(creatorAddress)
+    {
+      const getPaidStatus= async (creatorAddress,licenseFee)=>{
+        const ownerAddress= await getActiveAddress()
+        console.log(creatorAddress,ownerAddress)
+         confirmTransactions(ownerAddress,creatorAddress,licenseFee)
+      }
+      getPaidStatus(creatorAddress)
+    }
+  },[])
   return (
     <Card
       style={{height:"28rem"}}

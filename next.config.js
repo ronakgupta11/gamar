@@ -2,7 +2,14 @@
 const nextConfig = {
   transpilePackages: ["warp-contracts-plugin-signature"],
   images: {
-    domains: ['node1.irys.xyz'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.istockphoto.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],domains: ['node1.irys.xyz']
   }
 };
 

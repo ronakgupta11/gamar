@@ -58,7 +58,7 @@ export const fetchAllGames= async ()=>{
           title: findTagValue("Title", tags) || "",
           description: findTagValue("Description", tags) || "",
           license: determineLicense(tags),
-          
+          creatorId:findTagValue("Creator-Address",tags),
           contentType : contentType
         };
       });
