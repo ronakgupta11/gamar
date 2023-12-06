@@ -48,7 +48,7 @@ import {
             </span>
           </div>
   
-          <div className="flex items-center gap-7 text-white">
+          <div className="flex items-center gap-7 text-white font-space">
             <div href="#" active className="!text-white !self-center !flex ">
               <Link href="/sellGame">
               Sell Games

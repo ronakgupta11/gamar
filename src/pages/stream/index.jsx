@@ -106,7 +106,7 @@ return resp
           {streamExists?"+ Add":"Create"} Stream
         </Button>
         <Modal
-          dismissible
+          
           show={openModal}
           size="md"
           onClose={onCloseModal}

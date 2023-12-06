@@ -36,14 +36,14 @@ export const fetchAllGames= async ()=>{
         if (findTagValue("Access", tags) === "Restricted") {
           licenses.push(findTagValue("Access", tags) ?? "");
           licenses.push(findTagValue("Access-Fee", tags) ?? "");
-        } else if (findTagValue("Derivation", tags) === "Allowed-with-license-fee") {
-          licenses.push(findTagValue("Derivation", tags) ?? "");
-          licenses.push(findTagValue("Derivation-Fee", tags) ?? "");
-        } else if (findTagValue("Commercial-Use", tags) === "Allowed") {
-          licenses.push(findTagValue("Commercial-Use", tags) ?? "");
-          licenses.push(findTagValue("Commercial-Fee", tags) ?? "");
+        } else if (findTagValue("License-Type", tags) === "oneTime") {
+          licenses.push(findTagValue("License-Type", tags) ?? "");
+          licenses.push(findTagValue("License-Fee", tags) ?? "");
+        } else if (findTagValue("License-Type", tags) === "monthly") {
+          licenses.push(findTagValue("monthly", tags) ?? "");
+          licenses.push(findTagValue("License-Fee", tags) ?? "");
         } else {
-          licenses.push("Default-Public-Use");
+          licenses.push("free");
           licenses.push("None");
         }
     
@@ -58,11 +58,10 @@ export const fetchAllGames= async ()=>{
           title: findTagValue("Title", tags) || "",
           description: findTagValue("Description", tags) || "",
           license: determineLicense(tags),
-          
+          creatorId:findTagValue("Creator-Address",tags),
           contentType : contentType
         };
       });
-     console.log(result)
     
       return result
 }

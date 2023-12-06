@@ -9,8 +9,8 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
-    ],
-  },
+    ],domains: ['node1.irys.xyz']
+  }
 };
 
 module.exports = nextConfig;

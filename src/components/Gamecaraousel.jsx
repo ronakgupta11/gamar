@@ -18,29 +18,21 @@ const gameData = [
   ];
 const Gamecaraousel = () => {
 
-    const [games,setGames]=useState('')
-    useEffect(()=>{
-        const getGames = async ()=>{
-          const data= await fetchAllGames()
-          setGames(data)
-          console.log(data)
-        }
-        getGames()
-    },[])
+    
   return (
     <>
      <div 
       style={{height:"30rem"}}
-     className=" ">
-       <Carousel slideInterval={3000}>
+     className="h-66 sm:h-64 xl:h-80 2xl:h-96">
+       <Carousel slideInterval={5000}>
        {
         gameData.map(
             (data,index)=>{
-               
+                console.log(data)               
                 return (
                     <div
                      className='flex justify-center align-middle gap-12'>
-                     <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
+                     <GameCard description={data.description} title={data.title}  image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      <GameCard description={data.description} title={data.title} image={data.image||"/DefaultGameThumbnail.jpg"}/>
                      </div>
