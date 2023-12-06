@@ -29,7 +29,7 @@ const client = createReactClient({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main className={`${spaceMono.variable} font-sans`}>
+    <main className={`${spaceMono.variable} `}>
     <LivepeerConfig client={client}>
 
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
