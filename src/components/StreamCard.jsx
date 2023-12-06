@@ -3,6 +3,7 @@
 
 import goLive from '@/lib/goLive';
 import { Button, Card } from 'flowbite-react';
+import Link from 'next/link';
 import Image from 'next/image';
 // '/DefaultGameThumbnail.jpg
 function StreamCard({image,title,description, createOrWatch,id,streamUrl}) {
@@ -23,7 +24,8 @@ function StreamCard({image,title,description, createOrWatch,id,streamUrl}) {
       <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
         {description}
       </p>
-      <Button className='w-23 h-10 !bg-rose-600 ' onClick={()=>{createOrWatch=="create"? goLive(id) : watch(streamUrl)} }>{createOrWatch=="create"?"Go Live!":"Watch Now!"}</Button>
+      <Link href={"/watch"} >
+      <Button className='w-23 h-10 !bg-rose-600 ' onClick={()=>{createOrWatch=="create"? goLive(id) : watch(streamUrl)} }>{createOrWatch=="create"?"Go Live!":"Watch Now!"}</Button></Link>
     </Card>
   );
 }

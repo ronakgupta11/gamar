@@ -21,7 +21,7 @@ const gameData = [
   },
 ];
 
-const index = () => {
+const Index = () => {
   
   const [games,setGames]=useState([])
     useEffect(()=>{
@@ -56,4 +56,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
