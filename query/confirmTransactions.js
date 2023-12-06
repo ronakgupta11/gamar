@@ -5,7 +5,7 @@ export const confirmTransactions= async (ownerAddress,creatorAddress,licenseFee)
     console.log(creatorAddress)
     const graphqlQuery=`
     query {
-        transactions(recipients:["${ownerAddress}"]
+        transactions(recipients:["${creatorAddress}"]
         owners:["kfMKC_j20hamu9atdBV240QgPIJjFjYzRWLkyt04zNE"]
        
         )  {
