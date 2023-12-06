@@ -340,7 +340,7 @@ export function InputForm() {
           </div>
         </div>
         <Button type="submit" className={buttonVariants()} disabled={!connected}>
-          {connected ? isLoading ? <Spinner size={28} /> : "Upload Image" : "Please connect to upload an asset."}
+          {connected ? isLoading ? <Spinner size={28} /> : "Upload Game" : "Please connect to upload your Game."}
         </Button>
       </form>
     </Form>

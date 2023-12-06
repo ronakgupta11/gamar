@@ -35,21 +35,21 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
   
   return (
     <Card
-      style={{ height: "28rem" }}
+      style={{ height: "30rem" }}
       className="max-w-sm p-3 "
       renderImage={() => <Image  className="self-center" width={300} height={300} src={image} alt="image 1" />}
     >
-      <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 className="text-xl font-bold tracking-tight capitalize text-gray-900 dark:text-white">
         {title}
       </h5>
-      <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
+      <p className="font-normal capitalize text-sm text-gray-700 dark:text-gray-400">
         {description}
       </p>
       <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
-        License : UDL-{paymentType||"One Time "}
+        Payment : UDL-{paymentType||"One Time "}
       </p>
       <p className="font-normal text-sm text-gray-700 dark:text-gray-400">
-        License Fee : {licenseFee||"0.0001"} AR
+        Game Fee : {licenseFee||"0.0001"} AR
       </p>
       
 

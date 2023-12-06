@@ -49,15 +49,15 @@ function ConfirmPaymentModal({creatorAddress,licenseFee,title}) {
                 <h1>Game :</h1>
                 <h1>{title} </h1>
             </div>
-            <div>
-                <h1>
+            <div className='flex gap-3'>
+                <h1 >
                 Creator ID :
                 </h1>
                 <h1 className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
               {creatorAddress}
             </h1>
             </div>
-            <div>
+            <div className='flex gap-3'>
                 <h1>
                 Fees :
                 </h1>
@@ -69,7 +69,7 @@ function ConfirmPaymentModal({creatorAddress,licenseFee,title}) {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => {
-            handleBuyStream("kfMKC_j20hamu9atdBV240QgPIJjFjYzRWLkyt04zNE",licenseFee)
+            handleBuyStream(creatorAddress,licenseFee)
             setOpenModal(false)}
           }>Pay</Button>
           <Button color="gray" onClick={() => setOpenModal(false)}>
