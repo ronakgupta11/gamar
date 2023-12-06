@@ -14,6 +14,7 @@ function WatchStream() {
     const id  = router.query.streamId
     const title = router.query.title
     console.log(id, title)
+    const {data:asset,isError,error} = useStream(id)
 
     // const {id} =  useLoaderData();
     // const {data:asset,isError,error} = useStream(id)
@@ -23,8 +24,8 @@ function WatchStream() {
   return (
     <div className='mt-16 border-white border-2'>
         <Player
-        title={title}
-        playbackId={id}
+        title={asset?.name}
+        playbackId={asset?.playbackId}
 
         
         />
