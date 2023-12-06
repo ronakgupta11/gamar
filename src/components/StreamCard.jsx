@@ -4,8 +4,7 @@
 import goLive from '@/lib/goLive';
 import { Button, Card } from 'flowbite-react';
 import Link from 'next/link';
-import Image from 'next/image';
-// '/DefaultGameThumbnail.jpg
+
 function StreamCard({image,title,description, createOrWatch,id,streamUrl}) {
   function watch(k){
     console.log(k)
