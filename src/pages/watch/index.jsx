@@ -1,18 +1,23 @@
 import { useStream } from "@livepeer/react";
 import { Player, Broadcast } from "@livepeer/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
-
+import { useEffect } from "react";
+// import { RouteLoader } from "next/dist/client/route-loader";
 function WatchStream() {
   const router = useRouter();
-  const id =(router.query.streamId);
+  let id =(router.query.streamId) ? router.query.streamId : "" ;
 
-  const title = router.query.title;
-  console.log(id, title);
+ 
+  
+useEffect(()=>{
+id = router.query.streamId
 
-  if (id) {
-    const { data: asset, isError, error } = useStream(id);
-    console.log(asset);
+
+},[router])
+
+console.log("id",id)
+    const { data: asset } = useStream(id);
+    
 
     return (
       <div className="mt-16 border-white border-2">
@@ -24,7 +29,7 @@ function WatchStream() {
             />
       </div>
     );
-  }
+  
   // const {data:asset,isError,error} = useStream(id)
   // console.log(asset)
   // const {id} =  useLoaderData();
