@@ -40,7 +40,6 @@ export default function Stream() {
 
   function onCloseModal() {
     setOpenModal(false);
-    setStreamExists(true);
   }
 
   useEffect(() => {
@@ -101,18 +100,12 @@ export default function Stream() {
       </div>
 
       <div className="border-2 w-[25%] flex flex-col justify-center gap-8 items-center px-12">
-        {streamExists ? (
-          <div>{createdStreamCards}</div>
-        ) : (
-          <div className="text-lg">
-            You haven&apos;t created any streams yet :{"("}
-          </div>
-        )}
+ 
         <Button
           className="!bg-rose-700 !outline-none w-24 whitespace-nowrap px-16 py-1  !ring-0 hover:!bg-rose-800"
           onClick={() => setOpenModal(true)}
         >
-          {streamExists ? "+ Add" : "Create"} Stream
+          + Create Stream
         </Button>
         <Modal
           show={openModal}
