@@ -46,7 +46,7 @@ const Index = () => {
                 description={data.description}
                 title={data.title}
                 image={"" || "/DefaultGameThumbnail.jpg"}
-        
+                licenseFee={data.licenseFee||"0.0001"}
               />
             </div>
           );

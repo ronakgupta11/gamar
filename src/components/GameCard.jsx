@@ -25,8 +25,8 @@ function GameCard({image,title,description,creatorAddress,licenseFee, link,payme
         setPaidStatus(status)
          
       }
-
-      getPaidStatus(creatorAddress, "0.0023")
+      console.log(licenseFee)
+      getPaidStatus(creatorAddress, licenseFee)
       
       
     }

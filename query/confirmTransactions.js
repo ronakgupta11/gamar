@@ -9,7 +9,7 @@ export const confirmTransactions = async (
   const graphqlQuery = `
     query {
         transactions(recipients:["${creatorAddress}"]
-        owners:["kfMKC_j20hamu9atdBV240QgPIJjFjYzRWLkyt04zNE"]
+        owners:["${ownerAddress}"]
        
         )  {
             edges {
