@@ -20,7 +20,7 @@ console.log("id",id)
     
 
     return (
-      <div className="mt-16 border-white border-2">
+      <div className="mt-16 ">
         <Player
             title={asset?.name}
             playbackId={asset?.playbackId}

@@ -93,13 +93,13 @@ export default function Stream() {
     // min-h-[calc(100vh-5rem)]
 
     <main className="min-h-[calc(100vh-4rem)] flex justify-between pt-14 ">
-      <div className="w-full border-2  border-red-500 grid self-center gap-x-20 gap-y-10   grid-cols-3 py-12 px-4">
+      <div className="w-full   border-red-500 grid self-center gap-x-20 gap-y-10   grid-cols-3 py-12 px-4">
         {console.log("liveStream", liveStreams)}
         {liveStreamCards}
         {createdStreamCards}
       </div>
 
-      <div className="border-2 w-[25%] flex flex-col justify-center gap-8 items-center px-12">
+      <div className="w-[25%] flex flex-col justify-center gap-8 items-center px-12">
  
         <Button
           className="!bg-rose-700 !outline-none w-24 whitespace-nowrap px-16 py-1  !ring-0 hover:!bg-rose-800"

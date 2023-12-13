@@ -74,7 +74,7 @@ import Image from "next/image";
               accent="rgb(255 18 60)"
               profileModal={true}
               showBalance={true}
-              className="h-min border-2"
+              className="h-min"
             />
           </div>
         </div>
